@@ -76,6 +76,9 @@ public class GlUtil {
             GLES20.glDeleteProgram(program);
             program = 0;
         }
+        //fix bug, handle leak.
+        GLES20.glDeleteShader(vertexShader);
+        GLES20.glDeleteShader(pixelShader);
         return program;
     }
 

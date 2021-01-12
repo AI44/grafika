@@ -16,6 +16,7 @@
 
 package com.android.grafika;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.app.ListActivity;
 import android.content.Intent;
@@ -25,6 +26,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+
+import androidx.core.app.ActivityCompat;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -144,6 +147,12 @@ public class MainActivity extends ListActivity {
         if (!cm.isContentCreated(this)) {
             ContentManager.getInstance().createAll(this);
         }
+
+        ActivityCompat.requestPermissions(this,
+                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.INTERNET},
+                999);
     }
 
     /**
